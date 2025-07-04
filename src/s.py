@@ -17,7 +17,17 @@ def main():
             print(" 3. s compile <filename.s>  -> compile .s file to .c file")
     elif len(args) == 2:
         if args[0] == "compile" and args[1][-2:] == ".s":
-            print("compiling...")
+            # source code
+            code = ""
+            # read source file
+            try:
+                with open(args[1],'r') as src_file:
+                    code = src_file.read()
+            except:
+                print("unable to read source file:")
+                print("",args[1])        
+
+            print(code)    
 
 if __name__ == "__main__":
     main()
