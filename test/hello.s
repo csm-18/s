@@ -1,1 +1,4 @@
-// a comment
+
+fn main(){
+    log("hello") // hello
+}
