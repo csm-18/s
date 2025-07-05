@@ -1,4 +1,5 @@
 import sys
+from compiler import compile
 
 VERSION = '0.1.0'
 def main():
@@ -27,7 +28,10 @@ def main():
                 print("unable to read source file:")
                 print("",args[1])        
 
-            print(code)    
+            # compile 
+            output = compile(code)
+
+            print(output)                
 
 if __name__ == "__main__":
     main()
