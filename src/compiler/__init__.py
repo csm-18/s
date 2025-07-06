@@ -1,4 +1,4 @@
-from lexer import lexer
+from .lexer import lexer
 
 def compile(code:str):
     tokens = lexer(code)
