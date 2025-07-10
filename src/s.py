@@ -1,3 +1,4 @@
+import pprint
 import sys
 from compiler import compile
 
@@ -31,7 +32,7 @@ def main():
             # compile 
             output = compile(code)
 
-            print(output)                
+            pprint.pprint(output)                
 
 if __name__ == "__main__":
     main()
