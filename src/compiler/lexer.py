@@ -10,7 +10,11 @@ token_types = {
     "left_brace":5,
     "right_brace":6,
     "identifier":7,
+    "reserved_word":8,
 }
+
+# Reserved-words
+reserved_words = ['fn','log','main']
 
 number_symbols = ['0','1','2','3','4','5','6','7','8','9','.']
 identifier_symbols = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
@@ -113,10 +117,24 @@ def lexer(code:str):
                 x = y
                 continue
             else:
-                temp_token = Token(type=token_types['identifier'],value=temp_id,start_index=x)
-                tokens.append(temp_token)
-                x = y
-                continue  
+                is_reserved_word = False
+                for reserved_word in reserved_words:
+                    if temp_id == reserved_word:
+                        is_reserved_word = True
+                        break
+                
+                if is_reserved_word:
+                    temp_token = Token(type=token_types['reserved_word'],value=temp_id,start_index=x)
+                    tokens.append(temp_token)
+                    x = y
+                    continue
+                else:
+                    temp_token = Token(type=token_types['identifier'],value=temp_id,start_index=x)
+                    tokens.append(temp_token)
+                    x = y
+                    continue  
+                
+                
 
         x += 1
 
